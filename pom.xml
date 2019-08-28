@@ -3,8 +3,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.openliberty</groupId>
-  <!-- <artifactId>system-test-maven-app</artifactId> -->
+  <groupId>io.openliberty.demo</groupId>
   <artifactId>myservice</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -35,7 +34,14 @@
 			</releases>
 		</pluginRepository>
 	</pluginRepositories>
-  
+	
+	<repositories>
+	    <repository>
+	      <id>jitpack.io</id>
+	      <url>https://jitpack.io</url>
+	    </repository>
+	</repositories>
+	  
 	<dependencyManagement>
 		<dependencies>
 		<dependency>
@@ -78,10 +84,10 @@
       <artifactId>bean-validation</artifactId>
     </dependency>
   
-   <dependency>
-        <groupId>org.eclipse.microprofile.sandbox</groupId>
-        <artifactId>system-test-testcontainers</artifactId>
-        <version>0.1-SNAPSHOT</version>
+    <dependency>
+        <groupId>com.github.dev-tools-for-enterprise-java</groupId>
+        <artifactId>system-test</artifactId>
+        <version>v0.3-alpha</version>
         <scope>test</scope>
     </dependency>
     
