@@ -2,3 +2,14 @@ language: java
 jdk:
     - oraclejdk11
 
+before_install:
+    - echo "Deleting old .m2 artifacts..."
+    - rm -rf $HOME/.m2/repository/net/wasdev
+    - rm -rf $HOME/.m2/repository/io/openliberty
+    - chmod 777 setup.sh 
+    - ./setup.sh
+
+install: true
+
+script: mvn install -DboostRuntime=ol
+
