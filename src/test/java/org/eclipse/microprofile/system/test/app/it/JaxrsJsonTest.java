@@ -31,13 +31,12 @@ import javax.ws.rs.NotFoundException;
 
 import org.eclipse.microprofile.system.test.app.Person;
 import org.eclipse.microprofile.system.test.app.PersonService;
-import org.eclipse.microprofile.system.test.jupiter.MicroProfileTest;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.microprofile.MicroProfileApplication;
+import org.microshed.testing.jupiter.MicroShedTest;
+import org.microshed.testing.testcontainers.MicroProfileApplication;
 import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
-@MicroProfileTest
+@MicroShedTest
 public class JaxrsJsonTest {
     
     @Container

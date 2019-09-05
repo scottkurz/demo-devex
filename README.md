@@ -11,6 +11,10 @@
 
 ## How to run:
 
-mvn liberty:dev
+```
+# One time setup
+./setup.sh
 
+mvn install
+```
 
