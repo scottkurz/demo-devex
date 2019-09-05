@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.microprofile.system.test.app.it;
+package org.eclipse.microprofile.system.test.app;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -37,7 +37,7 @@ import org.microshed.testing.testcontainers.MicroProfileApplication;
 import org.testcontainers.junit.jupiter.Container;
 
 @MicroShedTest
-public class JaxrsJsonTest {
+public class JaxrsJsonIT {
     
     @Container
     public static MicroProfileApplication<?> app = new MicroProfileApplication<>()
