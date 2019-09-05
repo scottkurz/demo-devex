@@ -1,7 +1,9 @@
-/.apt_generated/
-/target/
-/.settings/
-/.gradle/
-/.classpath
-/.factorypath
-/.project
+.apt_generated/
+target/
+boost/
+ci.common/
+.settings/
+.gradle/
+.classpath
+.factorypath
+.project

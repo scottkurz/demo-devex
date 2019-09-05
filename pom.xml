@@ -1,26 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.openliberty.demo</groupId>
-  <artifactId>myservice</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+	<groupId>io.openliberty.demo</groupId>
+	<artifactId>myservice</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <app.name>LibertyProject</app.name>
-    <testServerHttpPort>9080</testServerHttpPort>
-    <testServerHttpsPort>9443</testServerHttpsPort>
-    <package.file>${project.build.directory}/${app.name}.zip</package.file>
-    <packaging.type>usr</packaging.type>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<packaging.type>usr</packaging.type>
+	</properties>
 
-  	<pluginRepositories>
+	<pluginRepositories>
 		<!-- Configure Sonatype OSS Maven snapshots repository -->
 		<pluginRepository>
 			<id>sonatype-nexus-snapshots</id>
@@ -34,93 +31,83 @@
 			</releases>
 		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<repositories>
-	    <repository>
-	      <id>jitpack.io</id>
-	      <url>https://jitpack.io</url>
-	    </repository>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
 	</repositories>
-	  
+
 	<dependencyManagement>
 		<dependencies>
-		<dependency>
-			<groupId>boost.boosters</groupId>
-			<artifactId>mp22-bom</artifactId>
-			<version>0.1.3-SNAPSHOT</version>
-			<scope>import</scope>
-			<type>pom</type>
-		</dependency>
+			<dependency>
+				<groupId>boost.boosters</groupId>
+				<artifactId>mp22-bom</artifactId>
+				<version>0.1.3-SNAPSHOT</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
-  <dependencies>
-   <dependency>
+	<dependencies>
+		<dependency>
 			<groupId>boost.boosters</groupId>
 			<artifactId>jaxrs</artifactId>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>boost.boosters</groupId>
 			<artifactId>cdi</artifactId>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>boost.boosters</groupId>
 			<artifactId>jsonb</artifactId>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>boost.boosters</groupId>
 			<artifactId>mpRestClient</artifactId>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>boost.boosters</groupId>
 			<artifactId>mpConfig</artifactId>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>boost.boosters</groupId>
 			<artifactId>mpHealth</artifactId>
 		</dependency>
-    <dependency>
-      <groupId>boost.boosters</groupId>
-      <artifactId>bean-validation</artifactId>
-    </dependency>
-  
-    <dependency>
-        <groupId>com.github.dev-tools-for-enterprise-java</groupId>
-        <artifactId>system-test</artifactId>
-        <version>v0.3-alpha</version>
-        <scope>test</scope>
-    </dependency>
-    
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter</artifactId>
-        <version>5.4.2</version>
-        <scope>test</scope>
-    </dependency>
-  </dependencies>
+		<dependency>
+			<groupId>boost.boosters</groupId>
+			<artifactId>bean-validation</artifactId>
+		</dependency>
 
-  <build>
-    <finalName>myservice</finalName>
-    <plugins>
-    
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.2</version>
-        <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-          <packagingExcludes>pom.xml</packagingExcludes>
-        </configuration>
-        <executions>
-            <execution>
-                <phase>package</phase>
-                <goals>
-                    <goal>war</goal>
-                </goals>
-            </execution>
-        </executions>
-      </plugin>
-      <plugin>
+		<dependency>
+			<groupId>com.github.microshed</groupId>
+			<artifactId>microshed-testing</artifactId>
+			<version>v0.3.1-alpha</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.4.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>myservice</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>boost</groupId>
 				<artifactId>boost-maven-plugin</artifactId>
 				<version>0.1.3-SNAPSHOT</version>
@@ -146,48 +133,42 @@
 					</execution>
 				</executions>
 			</plugin>
-     <!-- Plugin to run functional tests --> 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <version>3.0.0-M1</version>
-        <executions>
-          <execution>
-            <phase>integration-test</phase>
-            <id>integration-test</id>
-            <goals>
-              <goal>integration-test</goal>
-            </goals>
-            <configuration>
-              <trimStackTrace>false</trimStackTrace>
-              <includes>
-                <include>**/it/*.java</include>
-              </includes>
-              <systemProperties>
-                <MP_TEST_RUNTIME_URL>http://localhost:9080/</MP_TEST_RUNTIME_URL>
-                <WLP_USR_DIR>${project.build.directory}/liberty/wlp/usr</WLP_USR_DIR>
-              </systemProperties>
-            </configuration>
-          </execution>
-          <execution>
-            <id>verify-results</id>
-            <goals>
-              <goal>verify</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <summaryFile>${project.build.directory}/test-reports/it/failsafe-summary.xml</summaryFile>
-          <reportsDirectory>${project.build.directory}/test-reports/it</reportsDirectory>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+			<!-- Plugin to run integration tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>3.0.0-M1</version>
+				<executions>
+					<execution>
+						<phase>integration-test</phase>
+						<id>integration-test</id>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+						<configuration>
+							<trimStackTrace>false</trimStackTrace>
+							<systemProperties>
+								<MP_TEST_RUNTIME_URL>http://localhost:9080/</MP_TEST_RUNTIME_URL>
+								<WLP_USR_DIR>${project.build.directory}/liberty/wlp/usr</WLP_USR_DIR>
+							</systemProperties>
+						</configuration>
+					</execution>
+					<execution>
+						<id>verify-results</id>
+						<goals>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
-  	<profiles>
+	<profiles>
 		<profile>
 			<id>ol</id>
 			<activation>
+				<activeByDefault>true</activeByDefault>
 				<property>
 					<name>boostRuntime</name>
 					<value>ol</value>

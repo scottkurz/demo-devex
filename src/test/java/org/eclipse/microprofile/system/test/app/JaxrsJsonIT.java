@@ -16,7 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eclipse.microprofile.system.test.app.it;
+package org.eclipse.microprofile.system.test.app;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -31,14 +31,13 @@ import javax.ws.rs.NotFoundException;
 
 import org.eclipse.microprofile.system.test.app.Person;
 import org.eclipse.microprofile.system.test.app.PersonService;
-import org.eclipse.microprofile.system.test.jupiter.MicroProfileTest;
 import org.junit.jupiter.api.Test;
-import org.testcontainers.containers.microprofile.MicroProfileApplication;
+import org.microshed.testing.jupiter.MicroShedTest;
+import org.microshed.testing.testcontainers.MicroProfileApplication;
 import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
-@MicroProfileTest
-public class JaxrsJsonTest {
+@MicroShedTest
+public class JaxrsJsonIT {
     
     @Container
     public static MicroProfileApplication<?> app = new MicroProfileApplication<>()
