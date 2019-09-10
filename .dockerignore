@@ -1,3 +1,11 @@
+.git/
+.gradle/
+.settings/
+bin/
+boost/
+ci.ant/
+ci.common/
+ci.maven/
 build/
 target/
 !target/*.war

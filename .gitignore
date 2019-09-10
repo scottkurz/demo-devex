@@ -1,7 +1,10 @@
 .apt_generated/
+bin/
 target/
 boost/
+ci.ant/
 ci.common/
+ci.maven/
 .settings/
 .gradle/
 .classpath
