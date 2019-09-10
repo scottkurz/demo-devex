@@ -40,7 +40,7 @@ import org.testcontainers.junit.jupiter.Container;
 public class JaxrsJsonIT {
     
     @Container
-    public static MicroProfileApplication<?> app = new MicroProfileApplication<>()
+    public static MicroProfileApplication app = new MicroProfileApplication()
                     .withAppContextRoot("/myservice")
                     .withReadinessPath("/myservice/people");
 

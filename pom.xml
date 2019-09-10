@@ -14,7 +14,6 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<packaging.type>usr</packaging.type>
 	</properties>
 
 	<pluginRepositories>
@@ -82,9 +81,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.github.microshed</groupId>
-			<artifactId>microshed-testing</artifactId>
-			<version>v0.3.1-alpha</version>
+			<groupId>com.github.microshed.microshed-testing</groupId>
+			<artifactId>microshed-testing-liberty</artifactId>
+		    <version>v0.4-beta</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -106,6 +105,11 @@
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
+			</plugin>
+			<plugin>
+			    <groupId>io.openliberty.tools</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>3.0-M3-SNAPSHOT</version>
 			</plugin>
 			<plugin>
 				<groupId>boost</groupId>
@@ -148,8 +152,8 @@
 						<configuration>
 							<trimStackTrace>false</trimStackTrace>
 							<systemProperties>
-								<MP_TEST_RUNTIME_URL>http://localhost:9080/</MP_TEST_RUNTIME_URL>
-								<WLP_USR_DIR>${project.build.directory}/liberty/wlp/usr</WLP_USR_DIR>
+								<microshed_hostname>localhost</microshed_hostname>
+								<microshed_http_port>9080</microshed_http_port>
 							</systemProperties>
 						</configuration>
 					</execution>
