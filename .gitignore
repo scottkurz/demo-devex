@@ -7,3 +7,4 @@ ci.common/
 .classpath
 .factorypath
 .project
+/.apt_generated_tests/

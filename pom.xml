@@ -96,8 +96,19 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<finalName>myservice</finalName>
+		<!-- Allows plugin prefix, e.g. `mvn liberty:dev` -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>io.openliberty.tools</groupId>
+					<artifactId>liberty-maven-plugin</artifactId>
+					<version>3.0-SNAPSHOT</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
