@@ -11,5 +11,5 @@ before_install:
 
 install: true
 
-script: mvn install -DboostRuntime=ol
+script: mvn install
 
