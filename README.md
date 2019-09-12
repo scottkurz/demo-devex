@@ -41,21 +41,29 @@ mvn install
 
 4. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotation above the `getAllPeople()` method:
 ```
-    @Operation(
-        summary = "Get all people.",
-        description = "Returns all of the people that have been added.")
+    @APIResponse(
+        responseCode = "200",
+        description = "All of people that have been added.",
+        content = @Content(
+            mediaType = "application/json",
+            schema = @Schema(
+                type = SchemaType.OBJECT,
+                implementation = Person.class)))
 ```
 
 5. Save the file.  Notice the console shows a compilation error because the import was not added.
 
-6. Add the following import:
+6. Add the following imports:
 ```
-import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
+import org.eclipse.microprofile.openapi.annotations.media.Content;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 ```
 
 7. Save the file. Notice the console shows compilation was successful and the application gets updated.
 
-8. In a browser, go to `http://localhost:9080/openapi` and notice the summary and description from step 4 appears under the `get` operation of the `/people` endpoint.
+8. In a browser, go to `http://localhost:9080/openapi` and notice the `200` response code and description under the `get` operation of the `/people` endpoint.
 
 ##### Hot testing
 
