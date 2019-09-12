@@ -18,3 +18,19 @@
 mvn install
 ```
 
+## Scenarios
+
+#### Hot deployment with dev mode
+
+1. Add a dependency ...
+2. Make code changes ...
+3. Test changes
+4. Run UTs or ITs
+
+#### JPA support with Boost
+
+1. ...
+
+#### MicroShed Testing
+
+1. Write tests with MicoShed Testing ...
