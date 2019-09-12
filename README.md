@@ -39,7 +39,7 @@ mvn install
 
 3. In a browser, go to `http://localhost:9080/openapi` to view the new endpoint.
 
-4. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotation above the `getAllPeople()` method:
+4. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotations above the `getAllPeople()` method:
 ```
     @APIResponse(
         responseCode = "200",
@@ -49,12 +49,16 @@ mvn install
             schema = @Schema(
                 type = SchemaType.OBJECT,
                 implementation = Person.class)))
+    @Operation(
+        summary = "Get all people.",
+        description = "Returns all of the people that have been added.")
 ```
 
-5. Save the file.  Notice the console shows a compilation error because the import was not added.
+5. Save the file.  Notice the console shows compilation errors because imports were not added.
 
 6. Add the following imports:
 ```
+import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
 import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
@@ -63,7 +67,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 7. Save the file. Notice the console shows compilation was successful and the application gets updated.
 
-8. In a browser, go to `http://localhost:9080/openapi` and notice the `200` response code and description under the `get` operation of the `/people` endpoint.
+8. In a browser, go to `http://localhost:9080/openapi` and notice the summary, description, and `200` response code under the `get` operation of the `/people` endpoint.
 
 ##### Hot testing
 
