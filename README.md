@@ -59,13 +59,17 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 
 ##### Hot testing
 
-1. Above the method `getAllPeople()`, delete the `@GET` annotation.  Save the file.
+1. Above the method `getAllPeople()`, delete the `@GET` annotation.  
 
-2. In the console, press Enter to run tests.  Notice a test has an error.
+2. Save the file. Notice the console shows compilation was successful.
 
-3. Above the method `getAllPeople()`, restore the `@GET` annotation.  Save the file.
+3. In the console, press Enter to run tests.  Notice a test has an error.
 
-4. In the console, press Enter to run tests.  Notice the tests pass.
+4. Above the method `getAllPeople()`, restore the `@GET` annotation.  Save the file.
+
+5. Save the file. Notice the console shows compilation was successful.
+
+6. In the console, press Enter to run tests.  Notice the tests pass.
 
 ##### Hot debugging
 
