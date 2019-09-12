@@ -34,8 +34,3 @@ mvn install
 #### MicroShed Testing
 
 1. Write tests with MicoShed Testing ...
-
-#### Others
-
-1. Switch runtime with Boost
-
