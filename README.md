@@ -37,13 +37,13 @@ mvn install
 
 2. Save the file. The console shows the change is picked up, the feature is installed, and the application is updated.
 
-3. In a browser, go to `http://localhost:9080/openapi` to view the new endpoint.
+3. In a browser, go to `http://localhost:9080/openapi/ui` to view the new endpoint.
 
-4. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotation above the `getPerson(@PathParam("personId") long id)` method:
+4. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotation above the `getAllPeople()` method:
 ```
-    @Operation(
-        summary = "Get person from ID.",
-        description = "Returns the person with the given ID.")
+    @Operation(
+        summary = "Get all people.",
+        description = "Returns all of the people that have been added.")
 ```
 
 5. Save the file.  Notice the console shows a compilation error because the import was not added.
@@ -55,7 +55,7 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 
 7. Save the file. Notice the console shows compilation was successful and the application gets updated.
 
-8. In a browser, go to `http://localhost:9080/openapi` and notice the summary and description from step 4 appears under the `/people/{personId}` endpoint.
+8. In a browser, go to `http://localhost:9080/openapi/ui` and notice the summary and description from step 4 appears under the `GET` operation of the `/people` endpoint.
 
 ##### Hot testing
 
