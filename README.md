@@ -37,7 +37,7 @@ mvn install
 
 2. Save the file. The console shows the change is picked up, the feature is installed, and the application is updated.
 
-3. In a browser, go to `http://localhost:9080/openapi` to view the new endpoint.
+3. In a browser, go to `http://localhost:9080/openapi/ui` to view the OpenAPI UI which is now available.
 
 4. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotations above the `getAllPeople()` method:
 ```
@@ -67,7 +67,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 7. Save the file. Notice the console shows compilation was successful and the application gets updated.
 
-8. In a browser, go to `http://localhost:9080/openapi` and notice the summary, description, and `200` response code under the `get` operation of the `/people` endpoint.
+8. In a browser, go to `http://localhost:9080/openapi/ui`, expand `GET` `/people`, and notice the summary, description, and `200` response code which has been added.
 
 ##### Hot testing
 
