@@ -60,6 +60,13 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 
 12. In the console, press Enter to run tests.  Notice the tests pass.
 
+13. Inside the method `getAllPeople()`, set a breakpoint.
+
+14. In your IDE, attach a debugger to port `7777`.
+
+15. In your browser, go to `http://localhost:9080/myservice/people`.
+
+16. Notice your IDE pauses at the breakpoint that you set, allowing you to debug.
 
 #### JPA support with Boost
 
