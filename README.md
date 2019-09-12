@@ -77,7 +77,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 3. In the console, press Enter to run tests.  Notice a test has an error.
 
-4. Above the method `getAllPeople()`, restore the `@GET` annotation.  Save the file.
+4. Above the method `getAllPeople()`, restore the `@GET` annotation.
 
 5. Save the file. Notice the console shows compilation was successful.
 
