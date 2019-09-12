@@ -20,7 +20,12 @@ mvn install
 
 ## Scenarios
 
-#### Hot deployment with dev mode
+#### Dev mode
+
+1. Start dev mode with:
+`mvn liberty:dev`
+
+##### Hot deployment
 
 1. In `pom.xml`, add the following dependency:
 ```
@@ -52,21 +57,25 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 
 8. In a browser, go to `http://localhost:9080/openapi` and notice the summary and description from step 4 appears under the `/people/{personId}` endpoint.
 
-9. Above the method `getAllPeople()`, delete the `@GET` annotation.  Save the file.
+##### Hot testing
 
-10. In the console, press Enter to run tests.  Notice a test has an error.
+1. Above the method `getAllPeople()`, delete the `@GET` annotation.  Save the file.
 
-11. Above the method `getAllPeople()`, restore the `@GET` annotation.  Save the file.
+2. In the console, press Enter to run tests.  Notice a test has an error.
 
-12. In the console, press Enter to run tests.  Notice the tests pass.
+3. Above the method `getAllPeople()`, restore the `@GET` annotation.  Save the file.
 
-13. Inside the method `getAllPeople()`, set a breakpoint.
+4. In the console, press Enter to run tests.  Notice the tests pass.
 
-14. In your IDE, attach a debugger to port `7777`.
+##### Hot debugging
 
-15. In your browser, go to `http://localhost:9080/myservice/people`.
+1. Inside the method `getAllPeople()`, set a breakpoint.
 
-16. Notice your IDE pauses at the breakpoint that you set, allowing you to debug.
+2. In your IDE, attach a debugger to port `7777`.
+
+3. In your browser, go to `http://localhost:9080/myservice/people`.
+
+4. Notice your IDE pauses at the breakpoint that you set, allowing you to debug.
 
 #### JPA support with Boost
 
