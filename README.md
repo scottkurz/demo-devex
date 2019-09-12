@@ -81,6 +81,8 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 
 4. Notice your IDE pauses at the breakpoint that you set, allowing you to debug.
 
+5. Disconnect the debugger.
+
 #### JPA support with Boost
 
 1. ...
