@@ -83,7 +83,7 @@
 			<groupId>org.microshed.boost.boosters</groupId>
 			<artifactId>jpa</artifactId>
 		</dependency>
-		        <dependency>
+		<dependency>
             <groupId>org.microshed.boost.boosters</groupId>
             <artifactId>jdbc</artifactId>
         </dependency>
@@ -95,8 +95,8 @@
 
 
 		<dependency>
+		    <artifactId>microshed-testing-liberty</artifactId>
 			<groupId>com.github.microshed.microshed-testing</groupId>
-			<artifactId>microshed-testing-liberty</artifactId>
 		    <version>v0.4-beta</version>
 			<scope>test</scope>
 		</dependency>
@@ -108,12 +108,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.eclipse.microprofile.sandbox</groupId>
-			<artifactId>system-test-testcontainers</artifactId>
-			<version>0.1-SNAPSHOT</version>
-			<scope>test</scope>
-		</dependency>	
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
@@ -183,6 +177,7 @@
 							<systemProperties>
 								<microshed_hostname>localhost</microshed_hostname>
 								<microshed_http_port>9080</microshed_http_port>
+								<WLP_USR_DIR>${project.build.directory}/liberty/wlp/usr</WLP_USR_DIR>
 							</systemProperties>
 						</configuration>
 					</execution>

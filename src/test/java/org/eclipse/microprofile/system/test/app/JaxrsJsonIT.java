@@ -22,8 +22,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import org.eclipse.microprofile.system.test.SharedContainerConfig;
-
 
 import java.util.Collection;
 
@@ -31,22 +29,14 @@ import javax.inject.Inject;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.NotFoundException;
 
-import org.eclipse.microprofile.system.test.app.Person;
-import org.eclipse.microprofile.system.test.app.PersonService;
 import org.junit.jupiter.api.Test;
+import org.microshed.testing.SharedContainerConfig;
 import org.microshed.testing.jupiter.MicroShedTest;
-import org.microshed.testing.testcontainers.MicroProfileApplication;
-import org.testcontainers.junit.jupiter.Container;
 
 @MicroShedTest
 @SharedContainerConfig(AppContainerConfig.class)
 public class JaxrsJsonIT {
     
-    @Container
-    public static MicroProfileApplication app = new MicroProfileApplication()
-                    .withAppContextRoot("/myservice")
-                    .withReadinessPath("/myservice/people");
-
     @Inject
     public static PersonService personSvc;
 

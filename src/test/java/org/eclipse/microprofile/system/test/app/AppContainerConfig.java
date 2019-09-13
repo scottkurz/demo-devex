@@ -18,9 +18,9 @@
  */
 package org.eclipse.microprofile.system.test.app;
 
-import org.eclipse.microprofile.system.test.SharedContainerConfiguration;
+import org.microshed.testing.SharedContainerConfiguration;
+import org.microshed.testing.testcontainers.MicroProfileApplication;
 import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.containers.microprofile.MicroProfileApplication;
 import org.testcontainers.junit.jupiter.Container;
 
 public class AppContainerConfig implements SharedContainerConfiguration {
@@ -28,14 +28,18 @@ public class AppContainerConfig implements SharedContainerConfiguration {
 	@Container
 	public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>()
 					.withNetworkAliases("testpostgres")
-					.withDatabaseName("testdb");
+					.withDatabaseName("test")
+					.withExposedPorts(5432)
+					.withInitScript("init.sql");
 	
     @Container
-    public static MicroProfileApplication<?> app = new MicroProfileApplication<>()
+    public static MicroProfileApplication app = new MicroProfileApplication()
                     .withEnv("POSTGRES_HOSTNAME", "testpostgres")
-                    .withEnv("POSTGRES_PORT", "5432")
+                    .withEnv("boost_db_portNumber", "5432")
+                    .withEnv("boost_db_databaseName", "test")
+                    .withEnv("boost_db_username", "test")
+                    .withEnv("boost_db_password", "test")
                     .withAppContextRoot("/myservice");
-                    //.dependsOn(postgres); intermittent bugs, see: https://github.com/testcontainers/testcontainers-java/issues/1722
     
     @Override
     public void startContainers() {
