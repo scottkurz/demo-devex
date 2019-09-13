@@ -89,7 +89,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 2. In your IDE, attach a debugger to port `7777`.
 
-3. In your browser, go to `http://localhost:9080/myservice/people`.
+3. In your browser, go to http://localhost:9080/myservice/people.
 
 4. Notice your IDE pauses at the breakpoint that you set, allowing you to debug.
 
