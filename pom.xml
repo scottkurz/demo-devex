@@ -106,10 +106,11 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			<!-- Allows plugin prefix, e.g. `mvn liberty:dev` -->
 			<plugin>
-			    <groupId>io.openliberty.tools</groupId>
-                <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.0</version>
+				<groupId>io.openliberty.tools</groupId>
+				<artifactId>liberty-maven-plugin</artifactId>
+				<version>3.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.microshed.boost</groupId>
