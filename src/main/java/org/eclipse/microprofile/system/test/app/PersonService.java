@@ -24,6 +24,8 @@ import java.util.Map;
 
 //import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PositiveOrZero;
@@ -39,6 +41,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+
 @Path("/people")
 @ApplicationScoped
 @Produces(MediaType.APPLICATION_JSON)
@@ -46,6 +49,9 @@ import javax.ws.rs.core.MediaType;
 public class PersonService {
 
     private final Map<Long, Person> personRepo = new HashMap<>();
+
+    @PersistenceContext(unitName = "person-unit")
+    EntityManager entityManager;
 
     //@PostConstruct
     public void initPeople() {
