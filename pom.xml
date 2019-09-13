@@ -79,6 +79,20 @@
 			<groupId>org.microshed.boost.boosters</groupId>
 			<artifactId>bean-validation</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.microshed.boost.boosters</groupId>
+			<artifactId>jpa</artifactId>
+		</dependency>
+		        <dependency>
+            <groupId>org.microshed.boost.boosters</groupId>
+            <artifactId>jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.6</version>
+        </dependency>		
+
 
 		<dependency>
 			<groupId>com.github.microshed.microshed-testing</groupId>
@@ -93,6 +107,20 @@
 			<version>5.4.2</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.microprofile.sandbox</groupId>
+			<artifactId>system-test-testcontainers</artifactId>
+			<version>0.1-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>	
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>1.12.1</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
