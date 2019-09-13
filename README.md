@@ -29,10 +29,10 @@ mvn install
 
 1. In `pom.xml`, add the following dependency:
 ```
-        <dependency>
-            <groupId>boost.boosters</groupId>
-            <artifactId>mpOpenAPI</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.microshed.boost.boosters</groupId>
+			<artifactId>mp-openapi</artifactId>
+		</dependency>
 ```
 
 2. Save the file. The console shows the change is picked up, the feature is installed, and the application is updated.
