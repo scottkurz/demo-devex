@@ -97,7 +97,7 @@
 		<dependency>
 		    <artifactId>microshed-testing-liberty</artifactId>
 			<groupId>com.github.microshed.microshed-testing</groupId>
-		    <version>v0.4-beta</version>
+		    <version>0.4.1-beta</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -132,7 +132,7 @@
 			<plugin>
 				<groupId>io.openliberty.tools</groupId>
 				<artifactId>liberty-maven-plugin</artifactId>
-				<version>3.0</version>
+				<version>3.0.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.microshed.boost</groupId>

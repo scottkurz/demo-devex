@@ -95,7 +95,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 5. Disconnect the debugger.
 
-#### JPA support with Boost
+#### Database support with Boost
 
 1. ...
 
