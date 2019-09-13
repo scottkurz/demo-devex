@@ -1,12 +1,3 @@
-echo 'Installing ci.common lib ....'
-git clone https://github.com/wasdev/ci.common.git ./ci.common
-cd ./ci.common
-mvn clean install
-cd ..
+echo "Clone and install boost"
 git clone https://github.com/MicroShed/boost.git ./boost
-cd ./boost
-cd boost-common
-mvn install -Dinvoker.streamLogs=true
-cd ../boost-maven
-mvn install -Dinvoker.streamLogs=true
-cd ../..
+cd ./boost && git pull && cd boost-common && mvn install -Dinvoker.streamLogs=true && cd ../boost-maven && mvn install -Dinvoker.streamLogs=true && cd ../..
