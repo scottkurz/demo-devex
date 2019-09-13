@@ -68,7 +68,7 @@ public class PersonService {
     @GET
     @Path("/{personId}")
     public Person getPerson(@PathParam("personId") long id) {
-        Person foundPerson = personRepo.get(id);
+        Person foundPerson = entityManager.find(Person.class, id);
         if (foundPerson == null)
             personNotFound(id);
         return foundPerson;
@@ -78,7 +78,7 @@ public class PersonService {
     public Long createPerson(@QueryParam("name") @NotEmpty @Size(min = 2, max = 50) String name,
                              @QueryParam("age") @PositiveOrZero int age) {
         Person p = new Person(name, age);
-        personRepo.put(p.id, p);
+        entityManager.persist(p);
         return p.id;
     }
 
@@ -86,18 +86,14 @@ public class PersonService {
     @Path("/{personId}")
     public void updatePerson(@PathParam("personId") long id, @Valid Person p) {
         Person toUpdate = getPerson(id);
-        if (toUpdate == null)
-            personNotFound(id);
-        personRepo.put(id, p);
+        entityManager.merge(p);
     }
 
     @DELETE
     @Path("/{personId}")
     public void removePerson(@PathParam("personId") long id) {
-        Person toDelete = personRepo.get(id);
-        if (toDelete == null)
-            personNotFound(id);
-        personRepo.remove(id);
+        Person toDelete = getPerson(id);
+        entityManager.remove(toDelete);
     }
 
     private void personNotFound(long id) {
