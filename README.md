@@ -29,10 +29,10 @@ mvn install
 
 1. In `pom.xml`, add the following dependency:
 ```
-        <dependency>
-            <groupId>boost.boosters</groupId>
-            <artifactId>mpOpenAPI</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>org.microshed.boost.boosters</groupId>
+			<artifactId>mp-openapi</artifactId>
+		</dependency>
 ```
 
 2. Save the file. The console shows the change is picked up, the feature is installed, and the application is updated.
@@ -89,7 +89,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 2. In your IDE, attach a debugger to port `7777`.
 
-3. In your browser, go to `http://localhost:9080/myservice/people`.
+3. In your browser, go to http://localhost:9080/myservice/people.
 
 4. Notice your IDE pauses at the breakpoint that you set, allowing you to debug.
 
