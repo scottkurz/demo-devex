@@ -79,11 +79,25 @@
 			<groupId>org.microshed.boost.boosters</groupId>
 			<artifactId>bean-validation</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.microshed.boost.boosters</groupId>
+			<artifactId>jpa</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.microshed.boost.boosters</groupId>
+            <artifactId>jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.6</version>
+        </dependency>		
+
 
 		<dependency>
+		    <artifactId>microshed-testing-liberty</artifactId>
 			<groupId>com.github.microshed.microshed-testing</groupId>
-			<artifactId>microshed-testing-liberty</artifactId>
-		    <version>v0.4-beta</version>
+		    <version>0.4.1-beta</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -93,6 +107,14 @@
 			<version>5.4.2</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>1.12.1</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -106,10 +128,11 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+			<!-- Allows plugin prefix, e.g. `mvn liberty:dev` -->
 			<plugin>
-			    <groupId>io.openliberty.tools</groupId>
-                <artifactId>liberty-maven-plugin</artifactId>
-                <version>3.0</version>
+				<groupId>io.openliberty.tools</groupId>
+				<artifactId>liberty-maven-plugin</artifactId>
+				<version>3.0.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.microshed.boost</groupId>
@@ -154,6 +177,7 @@
 							<systemProperties>
 								<microshed_hostname>localhost</microshed_hostname>
 								<microshed_http_port>9080</microshed_http_port>
+								<WLP_USR_DIR>${project.build.directory}/liberty/wlp/usr</WLP_USR_DIR>
 							</systemProperties>
 						</configuration>
 					</execution>

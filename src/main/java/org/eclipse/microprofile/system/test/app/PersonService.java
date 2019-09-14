@@ -18,12 +18,19 @@
  */
 package org.eclipse.microprofile.system.test.app;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 //import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.sql.DataSource;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.PositiveOrZero;
@@ -31,6 +38,7 @@ import javax.validation.constraints.Size;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -45,57 +53,97 @@ import javax.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 public class PersonService {
 
-    private final Map<Long, Person> personRepo = new HashMap<>();
-
-    //@PostConstruct
+    @Resource
+    DataSource defaultDataSource;
+    
+    @PostConstruct
     public void initPeople() {
         System.out.println("Seeding database with sample data");
+        try (Connection conn = defaultDataSource.getConnection()){
+            conn.prepareStatement("CREATE TABLE IF NOT EXISTS people (id bigint, name text, age integer)").execute();
+        } catch (SQLException e) {
+            e.printStackTrace(System.out);
+        }
         createPerson("Sample Person A", 25);
-        createPerson("Sample Person B", 26);
+        createPerson("Sample Person B", 26);   
     }
-
+    
     @GET
-    public Collection<Person> getAllPeople() {
-        return personRepo.values();
+    public Collection<Person> getAllPeople(){
+        Set<Person> allPeople = new HashSet<>();
+
+        try (Connection conn = defaultDataSource.getConnection();
+             ResultSet rs = conn.prepareStatement("SELECT name, age, id FROM people").executeQuery()){
+            while (rs.next()) {
+                allPeople.add(new Person(rs.getString("name"),rs.getInt("age"),rs.getLong("id")));
+            }           
+            return allPeople;
+        } catch (SQLException e) {
+            throw new InternalServerErrorException("Could not get all people", e);  
+        } 
     }
 
     @GET
     @Path("/{personId}")
     public Person getPerson(@PathParam("personId") long id) {
-        Person foundPerson = personRepo.get(id);
-        if (foundPerson == null)
-            personNotFound(id);
-        return foundPerson;
+        try (Connection conn = defaultDataSource.getConnection();
+             ResultSet rs = conn.prepareStatement("SELECT name, age FROM people WHERE id = "+id).executeQuery()){
+            if (rs.next()) {
+                return new Person(rs.getString("name"),rs.getInt("age"),id);
+            }           
+            throw new NotFoundException("Person with id " + id + " not found.");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException("Could not get person", e);  
+        }
     }
 
     @POST
     public Long createPerson(@QueryParam("name") @NotEmpty @Size(min = 2, max = 50) String name,
-                             @QueryParam("age") @PositiveOrZero int age) {
+                             @QueryParam("age") @PositiveOrZero int age){
         Person p = new Person(name, age);
-        personRepo.put(p.id, p);
-        return p.id;
+
+        try (Connection conn = defaultDataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO people VALUES(?,?,?)")){
+            ps.setLong(1, p.id);
+            ps.setString(2, name);
+            ps.setInt(3, age);
+            ps.execute();       
+            return p.id;    
+        } catch (SQLException e) {
+            throw new InternalServerErrorException("Could not create new person", e);
+        }
     }
 
     @POST
     @Path("/{personId}")
     public void updatePerson(@PathParam("personId") long id, @Valid Person p) {
-        Person toUpdate = getPerson(id);
-        if (toUpdate == null)
-            personNotFound(id);
-        personRepo.put(id, p);
+        try (Connection conn = defaultDataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("UPDATE people SET name = ?, age = ? WHERE id = ?")){
+            ps.setString(1, p.name);
+            ps.setInt(2, p.age);        
+            ps.setLong(3, p.id);
+            if (ps.executeUpdate() > 0) {
+                return;
+            };  
+            throw new NotFoundException("Person with id " + id + " not found.");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException("Could not update person", e);
+        } 
     }
 
     @DELETE
     @Path("/{personId}")
     public void removePerson(@PathParam("personId") long id) {
-        Person toDelete = personRepo.get(id);
-        if (toDelete == null)
-            personNotFound(id);
-        personRepo.remove(id);
-    }
-
-    private void personNotFound(long id) {
-        throw new NotFoundException("Person with id " + id + " not found.");
+        try (Connection conn = defaultDataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("DELETE FROM people WHERE id = ?")){
+            ps.setLong(1,id);
+            if (ps.executeUpdate() > 0) {
+                return;
+            };  
+            throw new NotFoundException("Person with id " + id + " not found.");
+        } catch (SQLException e) {
+            throw new InternalServerErrorException("Could not delete person", e);
+        }
     }
 
 }
