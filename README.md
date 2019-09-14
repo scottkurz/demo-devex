@@ -27,19 +27,9 @@ mvn install
 
 ##### Hot deployment
 
-1. In `pom.xml`, add the following dependency:
-```
-		<dependency>
-			<groupId>org.microshed.boost.boosters</groupId>
-			<artifactId>mp-openapi</artifactId>
-		</dependency>
-```
+1. In a browser, go to `http://localhost:9080/openapi/ui` to view the OpenAPI UI which is now available.
 
-2. Save the file. The console shows the change is picked up, the feature is installed, and the application is updated.
-
-3. In a browser, go to `http://localhost:9080/openapi/ui` to view the OpenAPI UI which is now available.
-
-4. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotations above the `getAllPeople()` method:
+2. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotations above the `getAllPeople()` method:
 ```
     @APIResponse(
         responseCode = "200",
@@ -54,9 +44,9 @@ mvn install
         description = "Returns all of the people that have been added.")
 ```
 
-5. Save the file.  Notice the console shows compilation errors because imports were not added.
+3. Save the file.  Notice the console shows compilation errors because imports were not added.
 
-6. Add the following imports:
+4. Add the following imports:
 ```
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
@@ -65,9 +55,9 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 ```
 
-7. Save the file. Notice the console shows compilation was successful and the application gets updated.
+5. Save the file. Notice the console shows compilation was successful and the application gets updated.
 
-8. In a browser, go to `http://localhost:9080/openapi/ui`, expand `GET` `/people`, and notice the summary, description, and `200` response code which has been added.
+6. In a browser, go to `http://localhost:9080/openapi/ui`, expand `GET` `/people`, and notice the summary, description, and `200` response code which has been added.
 
 ##### Hot testing
 

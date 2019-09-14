@@ -84,20 +84,23 @@
 			<artifactId>jpa</artifactId>
 		</dependency>
 		<dependency>
-            <groupId>org.microshed.boost.boosters</groupId>
-            <artifactId>jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.6</version>
-        </dependency>		
-
+			<groupId>org.microshed.boost.boosters</groupId>
+			<artifactId>jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.microshed.boost.boosters</groupId>
+			<artifactId>mp-openapi</artifactId>
+		</dependency>
 
 		<dependency>
-		    <artifactId>microshed-testing-liberty</artifactId>
+			<artifactId>microshed-testing-liberty</artifactId>
 			<groupId>com.github.microshed.microshed-testing</groupId>
-		    <version>0.4.1-beta</version>
+			<version>0.4.1-beta</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -114,7 +117,6 @@
 			<version>1.12.1</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -226,6 +228,4 @@
 		</profile>
 	</profiles>
 
-
 </project>
-
