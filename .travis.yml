@@ -11,5 +11,5 @@ before_install:
 
 install: true
 
-script: mvn install -DboostRuntime=ol -Dboost.db.serverName=localhost -Dboost.db.portNumber=5432 -Dboost.db.password=test -Dboost.db.databaseName=test -Dboost.db.user=test
+script: mvn install -DboostRuntime=ol -Dboost_db_serverName=localhost -Dboost_db_portNumber=5432 -Dboost_db_password=test -Dboost_db_databaseName=test -Dboost_db_user=test
 
