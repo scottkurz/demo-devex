@@ -88,7 +88,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 #### Database support with Boost
 
-- The demo project shows configuring the application to use a DB with Boost.
+- Boost is used to configure the application to use a DB.
 
 #### MicroShed Testing
 
