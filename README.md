@@ -15,7 +15,8 @@
 # One time setup
 ./setup.sh
 
-mvn install
+mvn install -DboostRuntime=ol -Dboost_db_serverName=localhost -Dboost_db_portNumber=5432 -Dboost_db_password=test -Dboost_db_databaseName=test -Dboost_db_user=test
+
 ```
 
 ## Scenarios
@@ -23,7 +24,7 @@ mvn install
 #### Dev mode
 
 1. Start dev mode with:
-`mvn liberty:dev`
+`mvn liberty:dev -DboostRuntime=ol -Dboost_db_serverName=localhost -Dboost_db_portNumber=5432 -Dboost_db_password=test -Dboost_db_databaseName=test -Dboost_db_user=test`
 
 ##### Hot deployment
 
@@ -87,8 +88,8 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 #### Database support with Boost
 
-1. ...
+- The demo project shows configuring the application to use a DB with Boost.
 
 #### MicroShed Testing
 
-1. Write tests with MicoShed Testing ...
+- The integration tests are written using MicroShed Testing with PostgreSQL in container as a shared dependency.
