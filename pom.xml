@@ -176,11 +176,11 @@
 						</goals>
 						<configuration>
 							<trimStackTrace>false</trimStackTrace>
-							<systemProperties>
+							<systemPropertyVariables>
 								<microshed_hostname>localhost</microshed_hostname>
 								<microshed_http_port>9080</microshed_http_port>
 								<WLP_USR_DIR>${project.build.directory}/liberty/wlp/usr</WLP_USR_DIR>
-							</systemProperties>
+							</systemPropertyVariables>
 						</configuration>
 					</execution>
 					<execution>
