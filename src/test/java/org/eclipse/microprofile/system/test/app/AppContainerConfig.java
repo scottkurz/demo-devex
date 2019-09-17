@@ -25,13 +25,13 @@ import org.testcontainers.junit.jupiter.Container;
 
 public class AppContainerConfig implements SharedContainerConfiguration {
 
-	@Container
-	public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>()
-					.withNetworkAliases("testpostgres")
-					.withDatabaseName("test")
-					.withExposedPorts(5432)
-					.withInitScript("init.sql");
-	
+    @Container
+    public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>()
+                    .withNetworkAliases("testpostgres")
+                    .withDatabaseName("test")
+                    .withExposedPorts(5432)
+                    .withInitScript("init.sql");
+    
     @Container
     public static MicroProfileApplication app = new MicroProfileApplication()
                     .withEnv("POSTGRES_HOSTNAME", "testpostgres")
@@ -39,7 +39,7 @@ public class AppContainerConfig implements SharedContainerConfiguration {
                     .withEnv("boost_db_databaseName", "test")
                     .withEnv("boost_db_username", "test")
                     .withEnv("boost_db_password", "test")
-                    .withAppContextRoot("/myservice");
+                    .withAppContextRoot("");
     
     @Override
     public void startContainers() {
