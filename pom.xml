@@ -43,7 +43,7 @@
 			<dependency>
 				<groupId>org.microshed.boost.boms</groupId>
 				<artifactId>mp22-bom</artifactId>
-				<version>0.2</version>
+				<version>0.2.1</version>
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
@@ -139,7 +139,7 @@
 			<plugin>
 				<groupId>org.microshed.boost</groupId>
 				<artifactId>boost-maven-plugin</artifactId>
-				<version>0.2</version>
+				<version>0.2.1</version>
 				<executions>
 					<execution>
 						<goals>
