@@ -28,9 +28,19 @@ mvn install -DboostRuntime=ol -Dboost_db_serverName=localhost -Dboost_db_portNum
 
 ##### Hot deployment
 
-1. In a browser, go to `http://localhost:9080/openapi/ui` to view the OpenAPI UI which is now available.
+1. In `pom.xml`, add the following dependency:
+```
+               <dependency>
+                       <groupId>org.microshed.boost.boosters</groupId>
+                       <artifactId>mp-openapi</artifactId>
+               </dependency>
+```
 
-2. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotations above the `getAllPeople()` method:
+2. Save the file. The console shows the change is picked up, the feature is installed, and the application is updated.
+
+3. In a browser, go to `http://localhost:9080/openapi/ui` to view the OpenAPI UI which is now available.
+
+4. In the Java file `src/main/java/org/eclipse/microprofile/system/test/app/PersonService.java`, add the following annotations above the `getAllPeople()` method:
 ```
     @APIResponse(
         responseCode = "200",
@@ -45,9 +55,9 @@ mvn install -DboostRuntime=ol -Dboost_db_serverName=localhost -Dboost_db_portNum
         description = "Returns all of the people that have been added.")
 ```
 
-3. Save the file.  Notice the console shows compilation errors because imports were not added.
+5. Save the file.  Notice the console shows compilation errors because imports were not added.
 
-4. Add the following imports:
+6. Add the following imports:
 ```
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
@@ -56,9 +66,9 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 ```
 
-5. Save the file. Notice the console shows compilation was successful and the application gets updated.
+7. Save the file. Notice the console shows compilation was successful and the application gets updated.
 
-6. In a browser, go to `http://localhost:9080/openapi/ui`, expand `GET` `/people`, and notice the summary, description, and `200` response code which has been added.
+8. In a browser, go to `http://localhost:9080/openapi/ui`, expand `GET` `/people`, and notice the summary, description, and `200` response code which has been added.
 
 ##### Hot testing
 

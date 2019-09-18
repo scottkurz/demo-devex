@@ -93,11 +93,6 @@
 			<version>42.2.6</version>
 		</dependency>
 		<dependency>
-			<groupId>org.microshed.boost.boosters</groupId>
-			<artifactId>mp-openapi</artifactId>
-		</dependency>
-
-		<dependency>
 			<artifactId>microshed-testing-liberty</artifactId>
 			<groupId>com.github.microshed.microshed-testing</groupId>
 			<version>0.4.1-beta</version>
